@@ -21,7 +21,7 @@ def read_data_from_file(file_to_read):
                 list_of_data.append(line.split())
         return list_of_data
     except IOError:
-        print("An error occured while reading data from file")
+        raise IOError('The provided input is not a dictionary')
 
 #Cleans  values obtained from file ensuring
 #Numerical operations can be perfomed on them minus errors
@@ -44,14 +44,15 @@ def calculate_spreads(data_from_file):
     return spreads
 
 #Gets maximum spread value
-def get_and_display_max_spread_value(differences_in_mxt_and_mnt):
+def get_max_spread_value(differences_in_mxt_and_mnt):
     maximum_key = max(differences_in_mxt_and_mnt.items(),
                      key=operator.itemgetter(1))[0]
     ##Perform an 0(1) operation to get the value
     maximum_value = differences_in_mxt_and_mnt[maximum_key]
-    print("Day :",maximum_key,"Spread :",maximum_value)
+    result = "Day : "+str(maximum_key)+" Spread: "+str(maximum_value)
+    return result
 
 ##Calculation and spread display
 data = read_data_from_file('weather.dat');
 spreads = calculate_spreads(data)
-get_and_display_max_spread_value(spreads)
+print(get_max_spread_value(spreads))
