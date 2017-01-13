@@ -34,14 +34,14 @@ def clean_mnt_or_mxt_value(value):
 def calculate_spreads(data_from_file):
     #Remove last row(containing aggregation data)
     data_from_file.pop()
-    differences_in_mxt_and_mnt = {}
+    spreads = {}
     for row_of_data in data_from_file:
         day = row_of_data[0];
         mxt = clean_mnt_or_mxt_value(row_of_data[1])
         mnt = clean_mnt_or_mxt_value(row_of_data[2])
-        difference = mxt - mnt
-        differences_in_mxt_and_mnt[day]=difference
-    return differences_in_mxt_and_mnt
+        spread = mxt - mnt
+        spreads[day] = spread
+    return spreads
 
 #Gets maximum spread value
 def get_and_display_max_spread_value(differences_in_mxt_and_mnt):
