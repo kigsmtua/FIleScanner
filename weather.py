@@ -8,9 +8,8 @@
 #
 import operator
 import re
-#This function reads data from file
-##And returns the data in form of a list
-##Skips the day that the header and values
+
+#Reads data from file and returns data in a list
 def read_data_from_file(file_to_read):
     list_of_data = []
     try:
@@ -29,8 +28,7 @@ def clean_mnt_or_mxt_value(value):
     value = re.sub("[^0-9.]", "", value)
     return float(value)
 
-##Takes data read from file and calculaes the spread
-##Returns dictionary with day as key and spread as value
+##Calculate spreads
 def calculate_spreads(data_from_file):
     #Remove last row(containing aggregation data)
     data_from_file.pop()
@@ -52,7 +50,7 @@ def get_max_spread_value(differences_in_mxt_and_mnt):
     result = "Day : "+str(maximum_key)+" Spread: "+str(maximum_value)
     return result
 
-##Calculation and spread display
+##Calculation and display of maximum spread
 data = read_data_from_file('weather.dat');
 spreads = calculate_spreads(data)
 print(get_max_spread_value(spreads))
