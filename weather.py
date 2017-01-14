@@ -9,7 +9,7 @@
 import operator
 import re
 
-#Reads data from file and returns data in a list
+#Reads data from file and the data in a list
 def read_data_from_file(file_to_read):
     list_of_data = []
     try:
@@ -20,7 +20,7 @@ def read_data_from_file(file_to_read):
                 list_of_data.append(line.split())
         return list_of_data
     except IOError:
-        raise IOError('The provided input is not a dictionary')
+        raise IOError('An IOError occured while trying to read file')
 
 #Cleans  values obtained from file ensuring
 #Numerical operations can be perfomed on them minus errors
